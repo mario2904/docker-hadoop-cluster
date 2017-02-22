@@ -39,14 +39,4 @@ RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
     sed -i "s/#   StrictHostKeyChecking ask/    StrictHostKeyChecking no/" /etc/ssh/ssh_config
 
-# Add Helper Scripts
-RUN mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
-    mv /tmp/stop-hadoop.sh ~/stop-hadoop.sh && \
-    mv /tmp/init.sh ~/init.sh && \
-    chmod +x ~/start-hadoop.sh && \
-    chmod +x ~/stop-hadoop.sh && \
-    chmod +x ~/init.sh
-
 ENV USER=root
-
-CMD [ "sh", "-c", "service ssh start; bash"]
