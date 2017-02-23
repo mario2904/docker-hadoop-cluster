@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start SSH server
-service ssh start >> ssh
+service ssh start
 
 # Start HDFS DataNode
 $HADOOP_HOME/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode

@@ -16,7 +16,7 @@ Now run the following command to start the nodes. (The first time will take more
 docker-compose up -d
 ```
 
-**Technically that's it!** But you will only have 2 active nodes by default, 1 master and 1 slave. You will need to run the following command to "scale" de slave nodes (add more slave nodes) and specify the number of slave nodes desired.
+**Technically that's it!** But you will only have 2 active nodes by default, 1 master and 1 slave. You will need to run the following command to "scale" the slave nodes (add more slave nodes) and specify the number of slave nodes desired.
 
 ```bash
 docker-compose scale slave=<num>
@@ -38,7 +38,7 @@ There's a difference between the two commands **docker** and **docker-compose**.
 
 ### Master Node
 
-To acces the master node run the following:
+To access the master node run the following:
 
 ```bash
 docker-compose exec master bash
@@ -52,7 +52,7 @@ docker exec -it hadoop_master_1 bash
 
 ### Slave Nodes
 
-If you don't care which slave node you get to acces then just run the command:
+If you don't care which slave node you get to access then just run the command:
 
 ```bash
 docker-compose exec slave bash
@@ -70,7 +70,7 @@ To see the generated names of all the nodes run this:
 docker-compose ps
 ```
 
-*** Keep in mind that the Container Name will not be the same as the Hostname of each node.
+*** Keep in mind that the Container Name will not be the same as the Hostname of each slave node.
 
 
 
@@ -82,10 +82,10 @@ docker-compose down
 
 #### Extra
 
-You can play around with the **docker** command and do more actions such as: **stop**, **start**, **remove** to change the state of individual nodes. The same can be done with the **docker-compose** but it is for the whole cluster as a whole.
+You can play around with the **docker** command and do more actions such as: **stop**, **start** and **remove** to change the state of individual nodes. The same can be done with the **docker-compose** but it is for the whole cluster as a whole or per service.
 
 As a bonus there will be a volume mounted on the master node of the directory **workspace**. Meaning that you can do all your work from your own machine and then transfer it to that directory where the master node can reach it and execute jobs.
 
 ## References
 
-Primaily this project is forked from [kiwenlau's Project](https://github.com/kiwenlau/hadoop-cluster-docker) and then modified to use docker-compose instead of running scripts to manage the cluster.
+Primarily this project is forked from [kiwenlau's Project](https://github.com/kiwenlau/hadoop-cluster-docker) and then modified to use docker-compose instead of running scripts to manage the cluster.

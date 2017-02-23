@@ -7,7 +7,7 @@ service ssh start
 $HADOOP_HOME/bin/hdfs namenode -format
 
 # Start the HDFS NameNode
-$HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
+$HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
 
 # Start YARN ResourceManager
 $YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager

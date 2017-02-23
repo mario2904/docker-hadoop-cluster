@@ -15,7 +15,6 @@ services:
       - ./config/init-master.sh:/root/init-master.sh
       - ./workspace:/root/workspace
   slave:
-    # replicas: 3
     build: .
     image: hadoop
     command: ["sh", "-c", "chmod +x init-slave.sh; sh init-slave.sh; tail -f /dev/null"]
