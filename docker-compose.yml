@@ -13,7 +13,6 @@ services:
       - "19888:19888"
     volumes:
       - ./config/init-master.sh:/root/init-master.sh
-      - ./workspace:/root/workspace
   slave:
     build: .
     image: hadoop
@@ -22,5 +21,14 @@ services:
       - hadoop
     volumes:
       - ./config/init-slave.sh:/root/init-slave.sh
+  client:
+    build: .
+    image: hadoop
+    command: ["sh", "-c", "chmod +x init-client.sh; sh init-client.sh; tail -f /dev/null"]
+    networks:
+      - hadoop
+    volumes:
+      - ./config/init-client.sh:/root/init-client.sh
+      - ./workspace:/root/workspace
 networks:
   hadoop:
