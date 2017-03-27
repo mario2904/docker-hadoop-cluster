@@ -3,7 +3,7 @@ services:
   master:
     build: .
     image: hadoop
-    command: ["sh", "-c", "chmod +x init-master; sh init-master.sh; tail -f /dev/null"]
+    command: ["sh", "-c", "bash init-master.sh; tail -f /dev/null"]
     hostname: master
     networks:
       - hadoop
@@ -12,23 +12,21 @@ services:
       - "8088:8088"
       - "19888:19888"
     volumes:
-      - ./config/init-master.sh:/root/init-master.sh
+      - ./scripts/init-master.sh:/root/init-master.sh
   slave:
     build: .
     image: hadoop
-    command: ["sh", "-c", "chmod +x init-slave.sh; sh init-slave.sh; tail -f /dev/null"]
+    command: ["sh", "-c", "bash init-slave.sh; tail -f /dev/null"]
     networks:
       - hadoop
     volumes:
-      - ./config/init-slave.sh:/root/init-slave.sh
+      - ./scripts/init-slave.sh:/root/init-slave.sh
   client:
     build: .
     image: hadoop
-    command: ["sh", "-c", "chmod +x init-client.sh; sh init-client.sh; tail -f /dev/null"]
     networks:
       - hadoop
     volumes:
-      - ./config/init-client.sh:/root/init-client.sh
       - ./workspace:/root/workspace
 networks:
   hadoop:
