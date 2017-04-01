@@ -1,8 +1,7 @@
 version: '3'
 services:
   master:
-    build: .
-    image: hadoop
+    image: mario2904/hadoop
     command: ["sh", "-c", "bash init-master.sh; tail -f /dev/null"]
     hostname: master
     networks:
@@ -14,8 +13,7 @@ services:
     volumes:
       - ./scripts/init-master.sh:/root/init-master.sh
   slave:
-    build: .
-    image: hadoop
+    image: mario2904/hadoop
     command: ["sh", "-c", "bash init-slave.sh; tail -f /dev/null"]
     networks:
       - hadoop
@@ -23,7 +21,8 @@ services:
       - ./scripts/init-slave.sh:/root/init-slave.sh
   client:
     build: .
-    image: hadoop
+    image: client
+    command: ["sh", "-c", "tail -f /dev/null"]
     networks:
       - hadoop
     volumes:

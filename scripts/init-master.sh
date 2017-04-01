@@ -6,7 +6,7 @@ service ssh start
 # Format a new distributed filesystem as hdfs
 $HADOOP_HOME/bin/hdfs namenode -format
 
-# Start the HDFS NameNode
+# Start HDFS NameNode
 $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
 
 # Start YARN ResourceManager
