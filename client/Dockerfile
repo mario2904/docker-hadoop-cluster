@@ -22,3 +22,5 @@ RUN wget http://d3kbcqa49mib13.cloudfront.net/spark-$SPARK_VERSION-bin-without-h
 # Configure Spark
 RUN cp $SPARK_CONF_DIR/spark-env.sh.template $SPARK_CONF_DIR/spark-env.sh && \
     echo "export SPARK_DIST_CLASSPATH=$(hadoop classpath)" >> $SPARK_CONF_DIR/spark-env.sh
+
+CMD ["tail", "-f", "/dev/null"]
